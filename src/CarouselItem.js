@@ -1,27 +1,25 @@
 import React from 'react'
-import { View, Text, StyleSheet, Button} from 'react-native'
+import { View,StyleSheet, Dimensions} from 'react-native'
 import TextBlock from './TextBlock';
-import LinearGradient from 'react-native-linear-gradient';
+
+const {width} = Dimensions.get("window");
 
 const CarouselItem = (props) => {
+    let a =  props.activeSlide
     return (
-    <View>
-        <LinearGradient colors={['#6b73ff', '#000dff']} useAngle={true} angle={150}>
-            <View style={styles.container}>
-                <Text style={styles.itemTitle}>Calm</Text>
-                {props.content.map((blockContent)=>
-                    <TextBlock key={blockContent.title} title={blockContent.title} description={blockContent.description}/>
-                )}
-                <Button styles={styles.button} title={props.buttonText}/>
-            </View>
-        </LinearGradient>
+    <View style={{width}}>
+        <View style={styles.container}>
+            {props.content.map((blockContent)=>
+                <TextBlock key={blockContent.title} title={blockContent.title} description={blockContent.description}/>
+            )}
+        </View>
     </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-        marginHorizontal:20
+       paddingHorizontal:20
     },
     itemTitle: {
         fontSize:30, 
@@ -29,11 +27,7 @@ const styles = StyleSheet.create({
         fontFamily:'Roboto',
         fontWeight: 'bold'
     },
-    button: {
-        color:'#056FDD',
-        borderRadius:28,
-        backgroundColor: '#FFFFFF'
-    }
+    
 })
 
 export default CarouselItem
