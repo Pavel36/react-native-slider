@@ -3,7 +3,7 @@ import {
   SafeAreaView,
   StyleSheet
 } from 'react-native';
-import Carousel from './src/Carousel';
+import Carousel from './src/Components/Carousel';
 
 const data =[{
   content: [

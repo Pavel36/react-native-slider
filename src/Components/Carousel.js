@@ -1,5 +1,5 @@
 import React, { useRef, useState } from 'react'
-import { ScrollView, View, Dimensions, Button, Text, StyleSheet, Pressable } from 'react-native'
+import { ScrollView, View, Dimensions, Button, Text, StyleSheet, Pressable, Image } from 'react-native'
 import CarouselItem from './CarouselItem'
 import LinearGradient from 'react-native-linear-gradient';
 
@@ -18,8 +18,11 @@ const Carousel = (props) => {
     return (
         <View>
             <LinearGradient style={style.container} colors={['#6b73ff', '#000dff']} useAngle={true} angle={150}>
-                <Text style={style.itemTitle}>Calm</Text>
-                <ScrollView style={style.scroll} ref={scrollRef} pagingEnabled={true} showsHorizontalScrollIndicator={false} horizontal onScroll={changeSlide}>
+                <View style={{flex:1, flexDirection:'row', paddingHorizontal:20, paddingVertical:10}}>
+                    <Image resizeMode='contain' source={require('../img/logo.png')} style={{width:40, height:40}}/>
+                    <Text style={style.itemTitle}>Calm</Text>
+                </View>
+                <ScrollView ref={scrollRef} pagingEnabled={true} showsHorizontalScrollIndicator={false} horizontal onScroll={changeSlide}>
                     {props.data.map((item, k)=><CarouselItem key={k} content={item.content}/>)}
                 </ScrollView>
                 <View style={style.pagination}>
@@ -42,7 +45,7 @@ const style = StyleSheet.create({
     },
     itemTitle: {
         paddingHorizontal:20,
-        fontSize:30, 
+        fontSize:30,
         color:'#FFFFFF', 
         fontFamily:'Roboto',
         fontWeight: 'bold'

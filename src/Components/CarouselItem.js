@@ -6,7 +6,7 @@ const {width} = Dimensions.get("window");
 
 const CarouselItem = (props) => {
 
-    const optimumSize= props.content.length > 2 ? Math.ceil(width/(5*props.content.length)) : Math.ceil(width/9);
+    const optimumSize= props.content.length > 2 ? Math.ceil(width/(6*props.content.length)+3) : Math.ceil(width/9);
 
     return (
         <View style={{...styles.container, width}}>
