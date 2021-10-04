@@ -3,18 +3,16 @@ import { View, Text, StyleSheet } from 'react-native'
 
 const TextBlock = (props) => {
     return (
-        <View style={styles.textWrap}>
-            <Text style={styles.textBlockTitle}>{props.title}</Text>
-            {props.description.map((description)=><Text style={styles.textBlockDescription}>{description}</Text>)}
+        <View>
+            <Text style={{...styles.textBlockTitle, fontSize:props.optimumSize}}>{props.title}</Text>
+            {props.description.map((description, k)=><Text key={k} style={{...styles.textBlockDescription, fontSize:props.optimumSize}}>{description}</Text>)}
             
         </View>
     )
 }
 
+
 const styles = StyleSheet.create({
-    textWrap: {
-        marginTop:'5%'
-    },
     textBlockTitle: {
         fontSize:30, 
         color:'#FFFFFF', 

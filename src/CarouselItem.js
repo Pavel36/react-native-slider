@@ -5,29 +5,25 @@ import TextBlock from './TextBlock';
 const {width} = Dimensions.get("window");
 
 const CarouselItem = (props) => {
-    let a =  props.activeSlide
+
+    const optimumSize= props.content.length > 2 ? Math.ceil(width/(5*props.content.length)) : Math.ceil(width/9);
+
     return (
-    <View style={{width}}>
-        <View style={styles.container}>
+        <View style={{...styles.container, width}}>
             {props.content.map((blockContent)=>
-                <TextBlock key={blockContent.title} title={blockContent.title} description={blockContent.description}/>
+                <TextBlock optimumSize={optimumSize} key={blockContent.title} title={blockContent.title} description={blockContent.description}/>
             )}
         </View>
-    </View>
     );
 }
 
 const styles = StyleSheet.create({
     container: {
-       paddingHorizontal:20
-    },
-    itemTitle: {
-        fontSize:30, 
-        color:'#FFFFFF', 
-        fontFamily:'Roboto',
-        fontWeight: 'bold'
-    },
-    
+       paddingHorizontal:20,
+       flex:1,
+       flexDirection: 'column',
+       justifyContent: 'space-around'
+    }
 })
 
 export default CarouselItem

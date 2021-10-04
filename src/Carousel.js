@@ -20,7 +20,7 @@ const Carousel = (props) => {
             <LinearGradient style={style.container} colors={['#6b73ff', '#000dff']} useAngle={true} angle={150}>
                 <Text style={style.itemTitle}>Calm</Text>
                 <ScrollView style={style.scroll} ref={scrollRef} pagingEnabled={true} showsHorizontalScrollIndicator={false} horizontal onScroll={changeSlide}>
-                    {props.data.map((item)=><CarouselItem content={item.content}/>)}
+                    {props.data.map((item, k)=><CarouselItem key={k} content={item.content}/>)}
                 </ScrollView>
                 <View style={style.pagination}>
                     {props.data.map((item, k)=><Text key={k} style={activeSlide===k?style.paginationDotActive:style.paginationDot}>⬤</Text>
@@ -50,7 +50,7 @@ const style = StyleSheet.create({
     pagination: {
         flexDirection:'row', 
         position:'absolute', 
-        bottom:'15%', 
+        bottom:'12%', 
         alignSelf:'center'
     },
     paginationDot: {
@@ -70,10 +70,9 @@ const style = StyleSheet.create({
         backgroundColor: '#FFFFFF',
         alignItems: 'center',
         justifyContent: 'center',
-        paddingVertical: 12,
+        paddingVertical: 9,
         paddingHorizontal: 32,
-        borderRadius: 28,
-        elevation: 3
+        borderRadius: 28
     },
     text: {
         fontSize:22,
